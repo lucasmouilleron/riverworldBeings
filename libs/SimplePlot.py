@@ -231,7 +231,7 @@ def setupPlots():
 
 #################################################################################
 def modifyPlotHelper(plot):
-    plot.legend(loc="upper right")
+    plot.legend(loc="upper left")
     plot.autoscale(enable=True, axis='x', tight=True)
     # hideSpines(plot,all=True)
 
