@@ -1,0 +1,120 @@
+* {
+    font-size: 14px;
+    font-family: "CMU Serif";
+    line-height: 1.3em;
+}
+
+h1, h2, h3 {
+    font-family: "Montserrat";
+    color: #152c71;
+    text-transform: capitalize;
+    font-weight: 900;
+}
+
+h1 {
+    font-size: 2em;
+    border-bottom: 5px solid #152c71;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 30px;
+    border-left: 5px solid #152c71;
+    padding-left: 10px;
+}
+
+p {
+    text-align: justify;
+}
+
+hr {
+    visibility: hidden;
+    page-break-before: always !important;
+}
+
+table {
+    margin: 10px 0;
+    width: 100%;
+    border-spacing: 0px 0px;
+    border-collapse: separate;
+    border: none;
+}
+
+th, td {
+    padding: 4px 5px;
+}
+
+th {
+    text-transform: capitalize;
+    background-color: #152c71;
+    color: #fff;
+    text-align: left;
+    padding: 6px 5px;
+}
+
+td {
+    border-bottom: 3px solid #152c71;
+    text-align: left;
+}
+
+/*table tr:last-child td {*/
+/*border-bottom: 3px solid #152c71;*/
+/*}*/
+
+tr:nth-child(even) {
+    /*background: #efefef;*/
+}
+
+tr:nth-child(odd) {
+    background: #fff;
+}
+
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+
+img#logo-intro {
+    width: 40px;
+    float: right;
+}
+
+strong, code {
+    margin-left: 0px;
+}
+
+strong {
+    font-family: "CMU Serif Bold Extended Roman";
+    font-size: 0.9em;
+    margin-left: 0px;
+}
+
+code {
+    font-family: "Courier New";
+    font-weight: 100;
+    font-size: 0.85em;
+    margin-left: -2px;
+}
+
+em {
+    margin-left: -2px;
+}
+
+img.plot {
+    width: 90%;
+    margin: 8px 5% 13px 5%;
+    border-bottom: 0px solid #152c71;
+}
+
+table th:last-child {
+    width: 250px;
+}
+
+p.legend {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.8em;
+    margin-top: -23px;
+    page-break-inside: avoid !important;
+}

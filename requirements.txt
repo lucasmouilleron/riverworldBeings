@@ -1,0 +1,17 @@
+requests
+pandas
+numpy
+matplotlib
+scandir
+pyPdf
+python-Levenshtein
+var_dump
+# pdfminer # python 2
+arrow
+ipython
+simplejson
+commentjson # python 2
+# pyfiglet # python 2
+pdfkit
+markdown
+tabulate
