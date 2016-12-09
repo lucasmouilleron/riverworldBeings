@@ -178,15 +178,15 @@ sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of beings ever born
 sp.show()
 
 mainResults = OrderedDict([
-    ("total beigns ever born", ss.floatFormat(totalBeings / 1e9, 1) + " billions"),
-    ("total adult beigns ever born", ss.floatFormat(totalAdults / 1e9, 1) + " billions"),
-    ("proportion of alive beings amongst all beings ever born", ss.floatFormat(100 * populationDatas[-1]["count"] / totalBeings, 1) + "%"),
-    ("median year of adult beings ever born", yearMedianAdults),
-    ("median year of beings ever born", yearMedianBeings)
+    ("Total beigns ever born", ss.floatFormat(totalBeings / 1e9, 1) + " billions"),
+    ("Total adult beigns ever born", ss.floatFormat(totalAdults / 1e9, 1) + " billions"),
+    ("Proportion of alive beings amongst all beings ever born", ss.floatFormat(100 * populationDatas[-1]["count"] / totalBeings, 1) + "%"),
+    ("Median year of adult beings ever born", yearMedianAdults),
+    ("Median year of beings ever born", yearMedianBeings)
 ])
 
 proportionResults = OrderedDict([
-    ("me", "%s%% (%s)" % (ss.floatFormat(100 / totalBeings, 20), 1)),
+    ("Me", "%s%% (%s)" % (ss.floatFormat(100 / totalBeings, 20), 1)),
     ("Asians", "%s%% (%.2e)" % (ss.floatFormat(100 * totalBeingsByContinentsRatio[continentFields.index("asia")], 0), totalBeingsByContinents[continentFields.index("asia")])),
     ("Paloelithical era", ss.floatFormat(100 * paleolithicalCountAdults / totalAdults, 1) + "%"),
     ("Neolithical era", ss.floatFormat(100 * neolithicalCountAdults / totalAdults, 1) + "%"),
@@ -195,7 +195,7 @@ proportionResults = OrderedDict([
     ("Classical Athens (508 BC - 322 BC)", ss.floatFormat(100 * (-322 - -508) * 2.5e5 / comuteLifeExpectancyForEra(-508, -322, populationDatas)[1] / totalAdults, 3) + "%"),
     ("Roman Republic (509 BC - 27 BC)", ss.floatFormat(100 * (-27 - -509) * 3e5 / comuteLifeExpectancyForEra(-509, -27, populationDatas)[1] / totalAdults, 2) + "%"),
     ("Western Roman Empire (27 BC - 476 AD)", ss.floatFormat(100 * (476 - -27) * 45e6 / comuteLifeExpectancyForEra(-27, 476, populationDatas)[1] / totalAdults, 1) + "%"),
-    ("after WWII", ss.floatFormat(100 * afterWWICountAdults / totalAdults, 0) + "%")
+    ("After WWII", ss.floatFormat(100 * afterWWICountAdults / totalAdults, 0) + "%")
 ])
 
 report = smr.Report()

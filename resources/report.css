@@ -6,14 +6,14 @@
 
 h1, h2, h3 {
     font-family: "Montserrat";
-    color: #1F43AE;
+    color: #1639A1;
     text-transform: capitalize;
     font-weight: 900;
 }
 
 h1 {
     font-size: 2em;
-    border-bottom: 5px solid #1F43AE;
+    border-bottom: 5px solid #1639A1;
     margin-bottom: 50px;
     text-transform: uppercase;
 }
@@ -21,7 +21,7 @@ h1 {
 h2 {
     font-size: 1.5em;
     margin-top: 30px;
-    border-left: 5px solid #1F43AE;
+    border-left: 5px solid #1639A1;
     padding-left: 10px;
 }
 
@@ -48,19 +48,19 @@ th, td {
 
 th {
     text-transform: capitalize;
-    background-color: #1F43AE;
+    background-color: #1639A1;
     color: #fff;
     text-align: left;
-    padding: 6px 5px;
+    padding: 6px 8px;
 }
 
 td {
-    border-bottom: 3px solid #1F43AE;
+    border-bottom: 3px solid #1639A1;
     text-align: left;
 }
 
 /*table tr:last-child td {*/
-/*border-bottom: 3px solid #1F43AE;*/
+/*border-bottom: 3px solid #1639A1;*/
 /*}*/
 
 tr:nth-child(even) {
@@ -75,13 +75,13 @@ table, tr, td, th, tbody, thead, tfoot {
     page-break-inside: avoid !important;
 }
 
-img#logo-intro {
-    width: 40px;
-    float: right;
-}
-
 strong, code {
     margin-left: 0px;
+}
+
+
+em {
+    margin-left: -2px;
 }
 
 strong {
@@ -97,14 +97,10 @@ code {
     margin-left: -2px;
 }
 
-em {
-    margin-left: -2px;
-}
-
 img.plot {
     width: 90%;
     margin: 8px 5% 13px 5%;
-    border-bottom: 0px solid #1F43AE;
+    border-bottom: 0px solid #1639A1;
 }
 
 table th:last-child {
@@ -117,4 +113,10 @@ p.legend {
     font-size: 0.8em;
     margin-top: -23px;
     page-break-inside: avoid !important;
+}
+
+
+img#logo-intro {
+    width: 40px;
+    float: right;
 }
