@@ -22,7 +22,9 @@ Definitions
 
 Datas 
 -----
-- Dataset compiled amongst considered sources
+- Dataset compiled amongst considered sources : 
+    - until now `./data/population.csv`
+    - including 2070 projections `./data/population-with-future.csv`
 - The dataset consists of Point In Times (*PIT*)
 - For each *PIT*, these metrics are available : year, beings count in millions, *LE*, *LAE*, *CM* and continental proportions
 - Depending on sources, *CM*, *IM*, *LE* and/or *LAE* are provided or not. Some datas have been extrapolated. Underlying model : *LE = CM * 5/2 + LAE * (1 - CM)*
@@ -60,8 +62,8 @@ Calculus
 
 Results
 -------
-- The last report : ./output/report.pdf
-- The last plots : ./output
+- The last report : `./output/report.pdf`
+- The last plots : `./output`
 
 Sources
 -------

@@ -119,7 +119,7 @@ plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), 100 * computedPopluationDatas["% total adults"], 0.7, label="% of total adult beings", color=sp.getNextColor())
 plot.set_xticks([0.5 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
-sp.hideSpines(plot,vertical=True)
+sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld distribution of adult beings eras amongst all adult beings ever born", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
@@ -129,7 +129,7 @@ plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(continentFields) - 1), 100 * totalBeingsByContinentsRatio[1:len(continentFields)], 0.7, label="% of total adult beings", color=sp.getNextColor())
 plot.set_xticks([0.65 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(continentFields[1:len(continentFields)], rotation=20, ha="right")
-sp.hideSpines(plot,vertical=True)
+sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld distribution of adult beings continents amongst all adult beings ever born", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
@@ -139,7 +139,7 @@ plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedAdults, 0.7, label="cumulated amount of adult beings", color=sp.getNextColor())
 plot.set_xticks([0.5 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
-sp.hideSpines(plot,vertical=True)
+sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of adult beings ever born", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
@@ -150,7 +150,7 @@ h = plot.bar(arange(len(computedPopluationDatas)), 100 * computedPopluationDatas
 h = plot.bar(arange(len(computedPopluationDatas)) + 0.35, 100 * computedPopluationDatas["% total adults"], 0.35, label="% of total adult beings", color=sp.getNextColor())
 plot.set_xticks([0.2 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
-sp.hideSpines(plot,vertical=True)
+sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld distribution of beings eras amongst all beings ever born", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
@@ -161,7 +161,7 @@ h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, la
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedAdults, 0.7, label="cumulated amount of adult beings", color=sp.getNextColor())
 plot.set_xticks([0.2 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
-sp.hideSpines(plot,vertical=True)
+sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of beings ever born", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
@@ -172,7 +172,7 @@ h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, la
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeingsFunction, 0.7, label="cumulated amount of beings with growth function", color=sp.getNextColor())
 plot.set_xticks([0.2 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
-sp.hideSpines(plot,vertical=True)
+sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of beings ever born - calculs comparaison", folder=outputFolder, datePrefix=False, format="png")
 
 sp.show()
@@ -180,14 +180,14 @@ sp.show()
 mainResults = OrderedDict([
     ("total beigns ever born", ss.floatFormat(totalBeings / 1e9, 1) + " billions"),
     ("total adult beigns ever born", ss.floatFormat(totalAdults / 1e9, 1) + " billions"),
-    ("proportion of alive beings amongst all beings ever born", ss.floatFormat(100 * computedPopluationDatas[-1]["count beings"] / totalBeings, 1) + "%"),
+    ("proportion of alive beings amongst all beings ever born", ss.floatFormat(100 * populationDatas[-1]["count"] / totalBeings, 1) + "%"),
     ("median year of adult beings ever born", yearMedianAdults),
     ("median year of beings ever born", yearMedianBeings)
 ])
 
 proportionResults = OrderedDict([
-    ("me", ss.floatFormat(100 / totalBeings, 20) + "%"),
-    ("Asians", ss.floatFormat(100 * totalBeingsByContinentsRatio[continentFields.index("asia")], 0) + "%"),
+    ("me", "%s%% (%s)" % (ss.floatFormat(100 / totalBeings, 20), 1)),
+    ("Asians", "%s%% (%.2e)" % (ss.floatFormat(100 * totalBeingsByContinentsRatio[continentFields.index("asia")], 0), totalBeingsByContinents[continentFields.index("asia")])),
     ("Paloelithical era", ss.floatFormat(100 * paleolithicalCountAdults / totalAdults, 1) + "%"),
     ("Neolithical era", ss.floatFormat(100 * neolithicalCountAdults / totalAdults, 1) + "%"),
     ("-10K until the birh of Jesus Christ", ss.floatFormat(100 * neolithicalUntiJCCountAdults / totalAdults, 1) + "%"),
