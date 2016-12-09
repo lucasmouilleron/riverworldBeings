@@ -52,9 +52,9 @@ Calculus
 - Elapsed Time *ET = y2 - y1*
 - Average Amount of Beings for Period *AABP = (AB y2 + AB y1) / 2*
 - LAE for Period *LAEP = (LAE y1 + LAE y2) / 2*
-- Proportion of Adult Beings for Period *PABP = 1 - ((CM y1 + CM y2) / 2)*
+- Proportion of Adult Beings To Be for Period *PABTBP = 1 - ((CM y1 + CM y2) / 2)*
 - Thus Amount of Beings who were Born for Period *ABP = ET * AABP / LAEP*
-- Thus Amount of Adult Beings who were Born for Period *AABP = ET * AABP * PABP / LEP*
+- Thus Amount of Adult Beings who were Born for Period *AABP = ET * AABP * PABTBP / LEP*
 - Another calculus method is to use a simpe model of population growth :
     - *AB y1 = Ce^(r * y1)* and *AB y2 = Ce^(r * y2)* 
     - By integration, *ABP = ET * (AB y2 - AB y1) / (ln(AB y2) - ln(AB y1)) / LEP*
