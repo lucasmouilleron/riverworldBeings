@@ -222,5 +222,5 @@ report.image(sf.makePath(outputFolder, "Riverworld_Cumulated_Amount_Of_Beings_Ev
 report.paragraph("figure 5", ".legend")
 report.image(sf.makePath(outputFolder, "Riverworld_Cumulated_Amount_Of_Beings_Ever_Born_-_Calculs_Comparaison.png"), ".plot")
 report.paragraph("figure 6", ".legend")
-report.save(sf.makePath(outputFolder, "report.md"))
+# report.save(sf.makePath(outputFolder, "report.md"))
 report.savePdf(sf.makePath(outputFolder, "report.pdf"), sf.makePath(sc.RESOURCES_FOLDER, "report.css"))

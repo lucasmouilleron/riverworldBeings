@@ -56,11 +56,12 @@ Calculus
 - Another calculus method is to use a simpe model of population growth :
     - *AB y1 = Ce^(r * y1)* and *AB y2 = Ce^(r * y2)* 
     - By integration, *ABP = ET * (AB y2 - AB y1) / (ln(AB y2) - ln(AB y1)) / LEP*
+    - This method proved to be very similar to the naïve numerical integration we selected (cf Report - Figure 6)
 
 Results
 -------
-- Check the report : ./output/report.pdf
-- Check the plots : ./output
+- The last report : ./output/report.pdf
+- The last plots : ./output
 
 Sources
 -------
