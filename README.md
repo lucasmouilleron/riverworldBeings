@@ -25,6 +25,7 @@ Datas
 - Dataset compiled amongst considered sources : 
     - until now, conservative estimations for pre modern times : `./data/population-min.csv`
     - until now, optimistic estimations for pre modern times : `./data/population-max.csv`
+    - until now, average estimations for pre modern times : `./data/population-avg.csv`
     - including 2070 projections `./data/population-future.csv`
 - The dataset consists of Point In Times (*PIT*)
 - For each *PIT*, these metrics are available : year, beings count in millions, *LE*, *LAE*, *CM* and continental proportions
@@ -52,7 +53,7 @@ Calculus
 - *AB yx = Amount of Beings for year x*
 - Elapsed Time *ET = y2 - y1*
 - Average Amount of Beings for Period *AABP = (AB y2 + AB y1) / 2*
-- LAE for Period *LAEP = (LAE y1 + LAE y2) / 2*
+- *LAE* for Period *LAEP = (LAE y1 + LAE y2) / 2*
 - Proportion of Adult Beings To Be for Period *PABTBP = 1 - ((CM y1 + CM y2) / 2)*
 - Thus Amount of Beings who were Born for Period *ABP = ET * AABP / LAEP*
 - Thus Amount of Adult Beings who were Born for Period *AABP = ET * AABP * PABTBP / LEP*
@@ -95,8 +96,8 @@ Install
 Run
 ---
 - Configuration is loaded from `config.ini`
-- `python riverworld.py min|max|future`
-- all at once : `python riverworld.py min;python riverworld.py max;python riverworld.py future`
+- `python riverworld.py min|max|moy|future`
+- all at once : `python riverworld.py min;python riverworld.py max;python riverworld.py avg;python riverworld.py future`
 
 Credits
 -------

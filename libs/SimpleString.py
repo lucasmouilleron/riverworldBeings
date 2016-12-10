@@ -171,6 +171,7 @@ def containss(needles, haystack):
 ################################################################################
 def title(string):
     return ' '.join([s[0].upper() + s[1:] for s in string.split(' ')])
+    # return ' '.join([s[0] + s[1:] for s in string.split(' ')])
 
 
 ################################################################################

@@ -104,7 +104,7 @@ totalBeingsByContinentsRatio = totalBeingsByContinents / totalAdults
 
 paleolithicalCountBeings, paleolithicalCountAdults = computeAdultsAndBeingsForEera(-700000, -50000, computedPopluationDatas)
 neolithicalCountBeings, neolithicalCountAdults = computeAdultsAndBeingsForEera(-50000, -10000, computedPopluationDatas)
-neolithicalUntiJCCountBeings, neolithicalUntiJCCountAdults = computeAdultsAndBeingsForEera(-10000, 0, computedPopluationDatas)
+neolithicalUntiJCCountBeings, neolithicalUntiJCCountAdults = computeAdultsAndBeingsForEera(-10000, 1, computedPopluationDatas)
 afterWWICountBeings, afterWWICountAdults = computeAdultsAndBeingsForEera(1950, inf, computedPopluationDatas)
 classicalAthensWithCivilRightsAdultsCount = (-322 - -508) * 3e4 / computeLifeExpectancyForEra(-508, -322, populationDatas)[1]
 classicalAthensAdultsCount = (-322 - -508) * 2.5e5 / computeLifeExpectancyForEra(-508, -322, populationDatas)[1]
@@ -155,10 +155,13 @@ plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), 100 * computedPopluationDatas["% total beings"], 0.35, label="% of total beings", color=sp.getNextColor())
 h = plot.bar(arange(len(computedPopluationDatas)) + 0.35, 100 * computedPopluationDatas["% total adults"], 0.35, label="% of total adult beings", color=sp.getNextColor())
+# h = plot.bar(arange(len(computedPopluationDatas)), 100 * computedPopluationDatas["% total beings"], 0.35, label="% des êtres humains parmis l'intégralité des êtres humains", color=sp.getNextColor())
+# h = plot.bar(arange(len(computedPopluationDatas)) + 0.35, 100 * computedPopluationDatas["% total adults"], 0.35, label="% des êtres humains adultes parmis l'intégralité des êtres humains adultes", color=sp.getNextColor())
 plot.set_xticks([0.2 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
 sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld distribution of beings eras amongst all beings ever born", folder=outputFolder, datePrefix=False, format="svg")
+# sp.setNameAndSave(figure, plot, "Distribution des êtres humains par période historique", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
 annotations(plot)
@@ -166,21 +169,27 @@ plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumulated amount of beings", color=sp.getNextColor())
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedAdults, 0.7, label="cumulated amount of adult beings", color=sp.getNextColor())
+# h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumul des êtres humains", color=sp.getNextColor())
+# h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedAdults, 0.7, label="cumul des êtres humains adultes", color=sp.getNextColor())
 plot.set_xticks([0.2 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
 sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of beings ever born", folder=outputFolder, datePrefix=False, format="svg")
+# sp.setNameAndSave(figure, plot, "Cumul des êtres humains", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
 annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
-h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumulated amount of beings", color=sp.getNextColor())
-h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeingsFunction, 0.7, label="cumulated amount of beings with growth function", color=sp.getNextColor())
+h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumulated amount of beings - numercial integration", color=sp.getNextColor())
+h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeingsFunction, 0.7, label="cumulated amount of beings - growth function integration", color=sp.getNextColor())
+# h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumul des êtres humains nés - intégration numérique", color=sp.getNextColor())
+# h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeingsFunction, 0.7, label="cumul des êtres humains nés - intégration de la fonction de croissance", color=sp.getNextColor())
 plot.set_xticks([0.2 * patch.get_width() + patch.get_xy()[0] for patch in h])
 plot.set_xticklabels(tickLabels, rotation=20)
 sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of beings ever born - calculs comparaison", folder=outputFolder, datePrefix=False, format="svg")
+# sp.setNameAndSave(figure, plot, "Cumul des êtres humains - comparaison des méthodes de calcul", folder=outputFolder, datePrefix=False, format="png")
 
 sp.show()
 
@@ -198,9 +207,9 @@ proportionResults = OrderedDict([
     ("Paloelithical era", "%s%% (%.1e)" % (ss.floatFormat(100 * paleolithicalCountAdults / totalAdults, 1), paleolithicalCountAdults)),
     ("Neolithical era", "%s%% (%.1e)" % (ss.floatFormat(100 * neolithicalCountAdults / totalAdults, 1), neolithicalCountAdults)),
     ("-10K until the birh of Jesus Christ", "%s%% (%.1e)" % (ss.floatFormat(100 * neolithicalUntiJCCountAdults / totalAdults, 1), neolithicalUntiJCCountAdults)),
-    ("Classical Athens (508 BC - 322 BC) (with civil rights)", "%s%% (%.1e)" % (ss.floatFormat(100 * classicalAthensWithCivilRightsAdultsCount / totalAdults, 1), classicalAthensWithCivilRightsAdultsCount)),
-    ("Classical Athens (508 BC - 322 BC)", "%s%% (%.1e)" % (ss.floatFormat(100 * classicalAthensAdultsCount / totalAdults, 1), classicalAthensAdultsCount)),
-    ("Roman Republic (509 BC - 27 BC)", "%s%% (%.1e)" % (ss.floatFormat(100 * romanRepublicAdultsCount / totalAdults, 1), romanRepublicAdultsCount)),
+    ("Classical Athens (508 BC - 322 BC) (with civil rights)", "%s%% (%.1e)" % (ss.floatFormat(100 * classicalAthensWithCivilRightsAdultsCount / totalAdults, 3), classicalAthensWithCivilRightsAdultsCount)),
+    ("Classical Athens (508 BC - 322 BC)", "%s%% (%.1e)" % (ss.floatFormat(100 * classicalAthensAdultsCount / totalAdults, 3), classicalAthensAdultsCount)),
+    ("Roman Republic (509 BC - 27 BC)", "%s%% (%.1e)" % (ss.floatFormat(100 * romanRepublicAdultsCount / totalAdults, 3), romanRepublicAdultsCount)),
     ("Western Roman Empire (27 BC - 476 AD)", "%s%% (%.1e)" % (ss.floatFormat(100 * westerRomanEmpireAdultsCount / totalAdults, 1), westerRomanEmpireAdultsCount)),
     ("After WWII", "%s%% (%.1e)" % (ss.floatFormat(100 * afterWWICountAdults / totalAdults, 0), afterWWICountAdults)),
 ])
