@@ -20,7 +20,6 @@ ROOT_FOLDER = os.path.dirname(os.path.realpath(__file__)) + "/.."
 CONFIG = sc.Config(ROOT_FOLDER + "/resources/config.ini")
 ################################################################################
 DEBUG = CONFIG.getValue("DEBUG", True)
-INTERACTIVE_MODE = CONFIG.getValue("INTERACTIVE_MODE", True)
 SCRIPTS_DATA_FOLDER = CONFIG.getValue("SCRIPTS_DATA_FOLDER", ROOT_FOLDER + "/data")
 RESOURCES_FOLDER = CONFIG.getValue("RESOURCES_FOLDER", ROOT_FOLDER + "/resources")
 SCRIPTS_OUTPUT_FOLDER = CONFIG.getValue("SCRIPTS_PLOTS_FOLDER", ROOT_FOLDER + "/output")
@@ -64,8 +63,18 @@ def startInteractiveSession(exitAfer=False):
 
 
 ################################################################################
+def isInteractive():
+    try:
+        sys.ps1
+        return True
+    except:
+        return False
+
+
+################################################################################
 # INIT
 ################################################################################
+INTERACTIVE_MODE = isInteractive()
 from . import SimpleCollections as scl
 from . import SimplePlot as sp
 from . import SimpleLogger as sl

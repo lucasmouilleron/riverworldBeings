@@ -13,18 +13,19 @@ This project is proving him wrong.
 
 Definitions
 -----------
-- Begining of mankind : Homo Erectus, 700K BC, assuming all beings on Riverworld can walk
+- Begining of mankind : Homo Erectus, -700K, assuming all beings on Riverworld can walk
 - End of mankind : 2016. In the book, all people die in 1983 after interacting with an alien civilisation.
-- Child Mortality *CM* : death of infants and children under the age of five
-- Infant Mortality *IM* : death of infants and children under the age of one
+- Child Mortality *CM* : death of infants and children under the age of 5
+- Infant Mortality *IM* : death of infants and children under the age of 1
 - Life Expectancy *LE* : average time a being is expected to live
 - Life Adult Expectancy *LAE* : average time a being is expected to live if he reachs 5 years old
 
 Datas 
 -----
 - Dataset compiled amongst considered sources : 
-    - until now `./data/population.csv`
-    - including 2070 projections `./data/population-with-future.csv`
+    - until now, conservative estimations for pre modern times : `./data/population-min.csv`
+    - until now, optimistic estimations for pre modern times : `./data/population-max.csv`
+    - including 2070 projections `./data/population-future.csv`
 - The dataset consists of Point In Times (*PIT*)
 - For each *PIT*, these metrics are available : year, beings count in millions, *LE*, *LAE*, *CM* and continental proportions
 - Depending on sources, *CM*, *IM*, *LE* and/or *LAE* are provided or not. Some datas have been extrapolated. Underlying model : *LE = CM * 5/2 + LAE * (1 - CM)*
@@ -32,8 +33,8 @@ Datas
     - Beings counts estimation flucuates a lot. They can go as low as 1K individuals up to 100K
     - We have 3 milestones in our dataset : -700K (lower paleolithic), -50K (higher paleolithic) and -10K (begining of history)
     - For -10K, the poulation count is within the magnitude of the millions according to most of the sources. We kept the McEvedy estimation of 4 millions.
-    - For -50K, we kept the higher estimation of Jean-Pierre Bocquet-Appel from his study of upper paleolithical meta populations. He found 30K individuals in the Aurignacien (-30K).
-    - For -700K, we've assumed the population could not be higher than in -50K. We selected 10K individuals as 1K seemed very scary :-) 
+    - For -50K, we kept the higher estimation of Jean-Pierre Bocquet-Appel from his study of upper paleolithical meta populations in Europe. He found 15K individuals in the Aurignacien (-30K). Wordlwide, we estimated, as a minimum, we timed this result by 5. As a maximum by 10. 
+    - For -700K, we've assumed the population could not be higher than in -50K. We assumed the population at that time would be the population of -50K / 2. 
 - Case of *LE* et *CM* for prehistorical times :
     - As for beings counts, the *LE* estimations vary greatly
     - The Kaplan study suggest hunter gatherer modern societies tell us how prehistoric men lived and died. The study suggests the *ALE* is around 50 years and the *CM* around 0.5
@@ -62,7 +63,7 @@ Calculus
 
 Results
 -------
-- The last report : `./output/report.pdf`
+- The last report : `./output/(min|max|future)/report.pdf`
 - The last plots : `./output`
 
 Sources
@@ -94,7 +95,8 @@ Install
 Run
 ---
 - Configuration is loaded from `config.ini`
-- `python riverworld.py`
+- `python riverworld.py min|max|future`
+- all at once : `python riverworld.py min;python riverworld.py max;python riverworld.py future`
 
 Credits
 -------

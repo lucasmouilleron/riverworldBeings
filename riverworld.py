@@ -8,6 +8,7 @@ import libs.SimpleTime as st
 import libs.SimpleMarkdownReport as smr
 from numpy import *
 from collections import *
+import sys
 
 
 ################################################################################
@@ -25,7 +26,7 @@ def computeAdultsAndBeingsForEera(yearFrom, yearTo, computedPopluationDatas):
 
 
 ################################################################################
-def comuteLifeExpectancyForEra(yearFrom, yearTo, popluationDatas):
+def computeLifeExpectancyForEra(yearFrom, yearTo, popluationDatas):
     start, leFrom, leTo, leaFrom, leaTo = False, 0, 0, 0, 0
     for populationData in popluationDatas:
         if populationData["year"] <= yearFrom: start = True
@@ -51,8 +52,10 @@ def annotations(plot):
 ################################################################################
 # INIT
 ################################################################################
-outputFolder = sf.makeDirPath(sc.SCRIPTS_OUTPUT_FOLDER)
-populationSourceFile = sf.makePath(sf.makePath(sc.SCRIPTS_DATA_FOLDER), "population.csv")
+dataVersion = sys.argv[1] if len(sys.argv) >= 2 else "min"
+outputFolder = sf.makeDirPath(sc.SCRIPTS_OUTPUT_FOLDER, dataVersion)
+populationSourceFile = sf.makePath(sf.makePath(sc.SCRIPTS_DATA_FOLDER), "population-%s.csv" % dataVersion)
+sl.debug("Using dataset %s" % populationSourceFile)
 continentFields = ["world", "africa", "asia", "europe", "latin america", "north america", "oceania"]
 
 ################################################################################
@@ -103,6 +106,10 @@ paleolithicalCountBeings, paleolithicalCountAdults = computeAdultsAndBeingsForEe
 neolithicalCountBeings, neolithicalCountAdults = computeAdultsAndBeingsForEera(-50000, -10000, computedPopluationDatas)
 neolithicalUntiJCCountBeings, neolithicalUntiJCCountAdults = computeAdultsAndBeingsForEera(-10000, 0, computedPopluationDatas)
 afterWWICountBeings, afterWWICountAdults = computeAdultsAndBeingsForEera(1950, inf, computedPopluationDatas)
+classicalAthensWithCivilRightsAdultsCount = (-322 - -508) * 3e4 / computeLifeExpectancyForEra(-508, -322, populationDatas)[1]
+classicalAthensAdultsCount = (-322 - -508) * 2.5e5 / computeLifeExpectancyForEra(-508, -322, populationDatas)[1]
+romanRepublicAdultsCount = (-27 - -509) * 3e5 / computeLifeExpectancyForEra(-509, -27, populationDatas)[1]
+westerRomanEmpireAdultsCount = (476 - -27) * 45e6 / computeLifeExpectancyForEra(-27, 476, populationDatas)[1]
 
 ################################################################################
 # PLOT
@@ -188,20 +195,21 @@ mainResults = OrderedDict([
 proportionResults = OrderedDict([
     ("Me", "%s%% (%s)" % (ss.floatFormat(100 / totalBeings, 20), 1)),
     ("Asians", "%s%% (%.2e)" % (ss.floatFormat(100 * totalBeingsByContinentsRatio[continentFields.index("asia")], 0), totalBeingsByContinents[continentFields.index("asia")])),
-    ("Paloelithical era", ss.floatFormat(100 * paleolithicalCountAdults / totalAdults, 1) + "%"),
-    ("Neolithical era", ss.floatFormat(100 * neolithicalCountAdults / totalAdults, 1) + "%"),
-    ("-10K until the birh of Jesus Christ", ss.floatFormat(100 * neolithicalUntiJCCountAdults / totalAdults, 1) + "%"),
-    ("Classical Athens (508 BC - 322 BC) (with civil rights)", ss.floatFormat(100 * (-322 - -508) * 3e4 / comuteLifeExpectancyForEra(-508, -322, populationDatas)[1] / totalAdults, 3) + "%"),
-    ("Classical Athens (508 BC - 322 BC)", ss.floatFormat(100 * (-322 - -508) * 2.5e5 / comuteLifeExpectancyForEra(-508, -322, populationDatas)[1] / totalAdults, 3) + "%"),
-    ("Roman Republic (509 BC - 27 BC)", ss.floatFormat(100 * (-27 - -509) * 3e5 / comuteLifeExpectancyForEra(-509, -27, populationDatas)[1] / totalAdults, 2) + "%"),
-    ("Western Roman Empire (27 BC - 476 AD)", ss.floatFormat(100 * (476 - -27) * 45e6 / comuteLifeExpectancyForEra(-27, 476, populationDatas)[1] / totalAdults, 1) + "%"),
-    ("After WWII", ss.floatFormat(100 * afterWWICountAdults / totalAdults, 0) + "%")
+    ("Paloelithical era", "%s%% (%.1e)" % (ss.floatFormat(100 * paleolithicalCountAdults / totalAdults, 1), paleolithicalCountAdults)),
+    ("Neolithical era", "%s%% (%.1e)" % (ss.floatFormat(100 * neolithicalCountAdults / totalAdults, 1), neolithicalCountAdults)),
+    ("-10K until the birh of Jesus Christ", "%s%% (%.1e)" % (ss.floatFormat(100 * neolithicalUntiJCCountAdults / totalAdults, 1), neolithicalUntiJCCountAdults)),
+    ("Classical Athens (508 BC - 322 BC) (with civil rights)", "%s%% (%.1e)" % (ss.floatFormat(100 * classicalAthensWithCivilRightsAdultsCount / totalAdults, 1), classicalAthensWithCivilRightsAdultsCount)),
+    ("Classical Athens (508 BC - 322 BC)", "%s%% (%.1e)" % (ss.floatFormat(100 * classicalAthensAdultsCount / totalAdults, 1), classicalAthensAdultsCount)),
+    ("Roman Republic (509 BC - 27 BC)", "%s%% (%.1e)" % (ss.floatFormat(100 * romanRepublicAdultsCount / totalAdults, 1), romanRepublicAdultsCount)),
+    ("Western Roman Empire (27 BC - 476 AD)", "%s%% (%.1e)" % (ss.floatFormat(100 * westerRomanEmpireAdultsCount / totalAdults, 1), westerRomanEmpireAdultsCount)),
+    ("After WWII", "%s%% (%.1e)" % (ss.floatFormat(100 * afterWWICountAdults / totalAdults, 0), afterWWICountAdults)),
 ])
 
 report = smr.Report()
 report.line(sf.readFile(sc.ROOT_FOLDER + "/README.md", encoding="utf8"))
 report.sectionSeparator()
 report.title("Results")
+report.line("Dataset used : `%s`" % populationSourceFile.split("/")[-1])
 report.subTitle("Main results")
 report.tableFromDict(mainResults, "metric", "value", attrs=".std-table")
 report.subTitle("Proportion of adult beings amongst all adults ever born")
