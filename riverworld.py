@@ -17,7 +17,7 @@ import sys
 def computeAdultsAndBeingsForEera(yearFrom, yearTo, computedPopluationDatas):
     start, countBeingsForEra, countAdultsForEra = False, 0, 0
     for computedData in computedPopluationDatas:
-        if computedData["year"] == yearFrom: start = True
+        if computedData["year"] > yearFrom: start = True
         if start:
             countBeingsForEra += computedData["count beings"]
             countAdultsForEra += computedData["count adults"]
@@ -39,14 +39,6 @@ def computeLifeExpectancyForEra(yearFrom, yearTo, popluationDatas):
             break
     return (leFrom + leTo) / 2, (leaFrom + leaTo) / 2
 
-
-################################################################################
-def annotations(plot):
-    # sp.annotate(plot, ss.makeMessageKeyValueFromArray(["begining of mankind", -700000, "walking homo erectus"]))
-    # sp.annotate(plot, ss.makeMessageKeyValueFromArray(["end of mankind", 2016]))
-    # sp.annotate(plot, ss.makeMessageKeyValueFromArray(["adult being", "born human being who passed age 5"]))
-    # sp.annotate(plot, ss.makeMessageKeyValueFromArray(["being", "born human being"]))
-    pass
 
 
 ################################################################################
@@ -102,7 +94,7 @@ totalBeingsByContinents = zeros(len(continentFields))
 for index in arange(len(continentFields)): totalBeingsByContinents[index] = sum(computedPopluationDatas["count adults %s" % continentFields[index]])
 totalBeingsByContinentsRatio = totalBeingsByContinents / totalAdults
 
-paleolithicalCountBeings, paleolithicalCountAdults = computeAdultsAndBeingsForEera(-700000, -50000, computedPopluationDatas)
+paleolithicalCountBeings, paleolithicalCountAdults = computeAdultsAndBeingsForEera(-1500000, -50000, computedPopluationDatas)
 neolithicalCountBeings, neolithicalCountAdults = computeAdultsAndBeingsForEera(-50000, -10000, computedPopluationDatas)
 neolithicalUntiJCCountBeings, neolithicalUntiJCCountAdults = computeAdultsAndBeingsForEera(-10000, 1, computedPopluationDatas)
 afterWWICountBeings, afterWWICountAdults = computeAdultsAndBeingsForEera(1950, inf, computedPopluationDatas)
@@ -120,7 +112,6 @@ for index in arange(0, len(computedPopluationDatas)):
     else: tickLabels[index] = str(computedPopluationDatas[index - 1]["year"]) + ">" + str(computedPopluationDatas[index]["year"])
 
 figure, plot = sp.figureAndPlot()
-annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), 100 * computedPopluationDatas["% total adults"], 0.7, label="% of total adult beings", color=sp.getNextColor())
@@ -130,7 +121,6 @@ sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld distribution of adult beings eras amongst all adult beings ever born", folder=outputFolder, datePrefix=False, format="svg")
 
 figure, plot = sp.figureAndPlot()
-annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(continentFields) - 1), 100 * totalBeingsByContinentsRatio[1:len(continentFields)], 0.7, label="% of total adult beings", color=sp.getNextColor())
@@ -140,7 +130,6 @@ sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld distribution of adult beings continents amongst all adult beings ever born", folder=outputFolder, datePrefix=False, format="svg")
 
 figure, plot = sp.figureAndPlot()
-annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedAdults, 0.7, label="cumulated amount of adult beings", color=sp.getNextColor())
@@ -150,7 +139,6 @@ sp.hideSpines(plot, vertical=True)
 sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of adult beings ever born", folder=outputFolder, datePrefix=False, format="svg")
 
 figure, plot = sp.figureAndPlot()
-annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), 100 * computedPopluationDatas["% total beings"], 0.35, label="% of total beings", color=sp.getNextColor())
@@ -164,7 +152,6 @@ sp.setNameAndSave(figure, plot, "Riverworld distribution of beings eras amongst 
 # sp.setNameAndSave(figure, plot, "Distribution des êtres humains par période historique", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
-annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumulated amount of beings", color=sp.getNextColor())
@@ -178,7 +165,6 @@ sp.setNameAndSave(figure, plot, "Riverworld cumulated amount of beings ever born
 # sp.setNameAndSave(figure, plot, "Cumul des êtres humains", folder=outputFolder, datePrefix=False, format="png")
 
 figure, plot = sp.figureAndPlot()
-annotations(plot)
 plot.xaxis.grid(False)
 plot.xaxis.set_ticks_position("none")
 h = plot.bar(arange(len(computedPopluationDatas)), totalCumulatedBeings, 0.7, label="cumulated amount of beings - numercial integration", color=sp.getNextColor())

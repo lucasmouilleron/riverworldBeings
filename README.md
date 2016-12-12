@@ -13,7 +13,7 @@ This project is proving him wrong.
 
 Definitions
 -----------
-- Begining of mankind : Homo Erectus, -700K, assuming all beings on Riverworld can walk
+- Begining of mankind : Homo Erectus, -1500K, assuming all beings on Riverworld can walk
 - End of mankind : 2016. In the book, all people die in 1983 after interacting with an alien civilisation.
 - Child Mortality *CM* : death of infants and children under the age of 5
 - Infant Mortality *IM* : death of infants and children under the age of 1
@@ -32,10 +32,10 @@ Datas
 - Depending on sources, *CM*, *IM*, *LE* and/or *LAE* are provided or not. Some datas have been extrapolated. Underlying model : *LE = CM * 5/2 + LAE * (1 - CM)*
 - Case of beings count in prehistorical times : 
     - Beings counts estimation flucuates a lot. They can go as low as 1K individuals up to 100K
-    - We have 3 milestones in our dataset : -700K (lower paleolithic), -50K (higher paleolithic) and -10K (begining of history)
+    - We have 3 milestones in our dataset : -1500K (lower paleolithic), -50K (higher paleolithic) and -10K (begining of history)
     - For -10K, the poulation count is within the magnitude of the millions according to most of the sources. We kept the McEvedy estimation of 4 millions.
     - For -50K, we kept the higher estimation of Jean-Pierre Bocquet-Appel from his study of upper paleolithical meta populations in Europe. He found 15K individuals in the Aurignacien (-30K). Wordlwide, we estimated, as a minimum, we timed this result by 5. As a maximum by 10. 
-    - For -700K, we've assumed the population could not be higher than in -50K. We assumed the population at that time would be the population of -50K / 2. 
+    - For -1500K, we've assumed the population could not be higher than in -50K. We assumed the population at that time would be the population of -50K / 2. 
 - Case of *LE* et *CM* for prehistorical times :
     - As for beings counts, the *LE* estimations vary greatly
     - The Kaplan study suggest hunter gatherer modern societies tell us how prehistoric men lived and died. The study suggests the *ALE* is around 50 years and the *CM* around 0.5
@@ -46,7 +46,7 @@ Calculus
 --------
 - Linearity in between *PIT*s :
     - The underlying assumption is that the *PIT* metrics evolve linearly in between two *PIT*s
-    - This assumption can be considered true from -700K to 1700, from 1700 to 1900, from 1900 to 1950 and from 1950 to today
+    - This assumption can be considered true from -1500K to 1700, from 1700 to 1900, from 1900 to 1950 and from 1950 to today
     - The *PIT* resolution in the dataset is consistent with this observation
     - We then assume numerical midpoint integration is a reasonable estimation 
 - For the period *PIT 1* => *PIT 2* 
