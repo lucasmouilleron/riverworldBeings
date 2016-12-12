@@ -96,7 +96,7 @@ Install
 Run
 ---
 - Configuration is loaded from `config.ini`
-- `python riverworld.py min|max|moy|future`
+- `python riverworld.py min|max|avg|future`
 - all at once : `python riverworld.py min;python riverworld.py max;python riverworld.py avg;python riverworld.py future`
 
 Credits

@@ -52,7 +52,7 @@ def annotations(plot):
 ################################################################################
 # INIT
 ################################################################################
-dataVersion = sys.argv[1] if len(sys.argv) >= 2 else "min"
+dataVersion = sys.argv[1] if len(sys.argv) >= 2 else "avg"
 outputFolder = sf.makeDirPath(sc.SCRIPTS_OUTPUT_FOLDER, dataVersion)
 populationSourceFile = sf.makePath(sf.makePath(sc.SCRIPTS_DATA_FOLDER), "population-%s.csv" % dataVersion)
 sl.debug("Using dataset %s" % populationSourceFile)
